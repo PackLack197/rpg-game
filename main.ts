@@ -1,3 +1,7 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setVelocity(0, 100)
+})
+let mySprite: Sprite = null
 scene.setBackgroundColor(9)
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -121,7 +125,7 @@ scene.setBackgroundImage(img`
     feeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeef
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     . . . . b b b b . . . . . . . . 
     . . . b 3 3 3 3 b b b b . . . . 
     . . b b 3 3 3 3 3 1 1 b b c c . 
@@ -139,5 +143,6 @@ let mySprite = sprites.create(img`
     . . f b d d b c c f f b b f f . 
     . . f d d d b . . f f b b b f . 
     `, SpriteKind.Player)
-controller.moveSprite(mySprite, 100, 100)
-scene.cameraFollowSprite(mySprite)
+mySprite.ay = 300
+controller.moveSprite(mySprite, 50, 0)
+mySprite.setStayInScreen(true)
