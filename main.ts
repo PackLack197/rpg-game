@@ -1,3 +1,7 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setVelocity(0, -100)
+})
+let mySprite: Sprite = null
 scene.setBackgroundColor(9)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -121,3 +125,8 @@ scene.setBackgroundImage(img`
     feeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeef
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
+mySprite = sprites.create(assets.image`playerMushroom`, SpriteKind.Player)
+mySprite.setStayInScreen(true)
+mySprite.setPosition(20, 95)
+mySprite.ay = 200
+controller.moveSprite(mySprite, 100, 0)
