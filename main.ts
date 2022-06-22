@@ -1,5 +1,8 @@
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
+	
+})
 scene.setBackgroundColor(9)
-tiles.setCurrentTilemap(tilemap`level1`)
+tiles.setCurrentTilemap(tilemap`level3`)
 let mySprite = sprites.create(img`
     . . . . b b b b . . . . . . . . 
     . . . b 3 3 3 3 b b b b . . . . 
