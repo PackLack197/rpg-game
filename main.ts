@@ -1,5 +1,5 @@
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
-	
+    tiles.setCurrentTilemap(tilemap`level4`)
 })
 scene.setBackgroundColor(9)
 tiles.setCurrentTilemap(tilemap`level3`)
