@@ -3,6 +3,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let mySprite: Sprite = null
 scene.setBackgroundColor(9)
+tiles.setCurrentTilemap(tilemap`level1`)
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
