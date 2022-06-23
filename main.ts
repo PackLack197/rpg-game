@@ -1,9 +1,17 @@
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level4`)
+    mySprite2 = sprites.create(assets.image`enemySnake`, SpriteKind.Enemy)
+    tiles.placeOnRandomTile(mySprite2, sprites.castle.tileDarkGrass2)
+    mySprite2.follow(mySprite)
 })
+let mySprite2: Sprite = null
+let mySprite: Sprite = null
 scene.setBackgroundColor(9)
 tiles.setCurrentTilemap(tilemap`level3`)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     . . . . b b b b . . . . . . . . 
     . . . b 3 3 3 3 b b b b . . . . 
     . . b b 3 3 3 3 3 1 1 b b c c . 
@@ -24,3 +32,4 @@ let mySprite = sprites.create(img`
 controller.moveSprite(mySprite, 100, 100)
 scene.cameraFollowSprite(mySprite)
 mySprite.setStayInScreen(true)
+info.setLife(1000)
