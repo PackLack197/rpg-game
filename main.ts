@@ -83,15 +83,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`level3Chest`, function (sprite, location) {
-    if (game.askForNumber("What are the first 3 digits of pi?", 4) == 3.14) {
-        game.showLongText("Good job! You're done!", DialogLayout.Bottom)
-        game.over(true)
-    } else {
-        game.showLongText("Uh oh! You got it wrong! Try again!", DialogLayout.Bottom)
-        pause(2000)
-    }
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     if (game.askForNumber("What is 2+2?", 1) == 4) {
         game.showLongText("Correct! Go to level 2!", DialogLayout.Bottom)
@@ -159,6 +150,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`heartTile`, function (sprite,
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy(effects.ashes, 500)
     sprite.destroy()
+    info.changeScoreBy(1)
+    if (info.score() == 22) {
+        game.showLongText("The wall is down! You've won!", DialogLayout.Bottom)
+        tiles.setCurrentTilemap(tilemap`teleportBase`)
+        tiles.setWallAt(tiles.getTileLocation(10, 7), false)
+        tiles.setWallAt(tiles.getTileLocation(10, 6), false)
+        tiles.setTileAt(tiles.getTileLocation(10, 7), sprites.castle.tilePath5)
+        tiles.setTileAt(tiles.getTileLocation(10, 6), sprites.castle.tilePath5)
+    }
 })
 let snake5level1: Sprite = null
 let snake4level1: Sprite = null
