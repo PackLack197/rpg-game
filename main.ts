@@ -1,7 +1,7 @@
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     if (level2Done) {
         tiles.setCurrentTilemap(tilemap`level0`)
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 15; index++) {
             snakelevel3 = sprites.create(assets.image`enemySnake`, SpriteKind.Enemy)
             tiles.placeOnRandomTile(snakelevel3, sprites.dungeon.collectibleInsignia)
             snakelevel3.follow(playerMushroom, 50)
