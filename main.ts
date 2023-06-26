@@ -151,13 +151,20 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     otherSprite.destroy(effects.ashes, 500)
     sprite.destroy()
     info.changeScoreBy(1)
-    if (info.score() == 22) {
-        game.showLongText("The wall is down! You've won!", DialogLayout.Bottom)
-        tiles.setCurrentTilemap(tilemap`teleportBase`)
-        tiles.setWallAt(tiles.getTileLocation(10, 7), false)
-        tiles.setWallAt(tiles.getTileLocation(10, 6), false)
-        tiles.setTileAt(tiles.getTileLocation(10, 7), sprites.castle.tilePath5)
-        tiles.setTileAt(tiles.getTileLocation(10, 6), sprites.castle.tilePath5)
+    if (info.score() == 27) {
+        game.showLongText("The wall is down! You've won! But first, another question.", DialogLayout.Bottom)
+        if (game.askForNumber("What are the first 3 digits of pi?", 4) == 3.14) {
+            game.showLongText("Good job! You've won!", DialogLayout.Bottom)
+            tiles.setCurrentTilemap(tilemap`levelWin`)
+        } else {
+            game.showLongText("You got it wrong. Try again!", DialogLayout.Bottom)
+            if (game.askForNumber("What are the first 3 digits of pi?", 4) == 3.14) {
+                game.showLongText("Good job! You've won!", DialogLayout.Bottom)
+                tiles.setCurrentTilemap(tilemap`levelWin`)
+            } else {
+                game.over(false)
+            }
+        }
     }
 })
 let snake5level1: Sprite = null
@@ -188,7 +195,7 @@ playerMushroom = sprites.create(assets.image`mushroom`, SpriteKind.Player)
 controller.moveSprite(playerMushroom, 100, 100)
 scene.cameraFollowSprite(playerMushroom)
 playerMushroom.setStayInScreen(true)
-game.showLongText("You know you can't stall any longer. Your one goal is to DESTROY THE SNAKES!", DialogLayout.Bottom)
+game.showLongText("Oh no! The snakes! They're going to take over the world! You need to stop them!", DialogLayout.Bottom)
 game.showLongText("Step on the 1 to go to the first level!", DialogLayout.Bottom)
 statusbar = statusbars.create(20, 4, StatusBarKind.Health)
 statusbar.attachToSprite(playerMushroom, 5, 0)
