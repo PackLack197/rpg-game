@@ -34,13 +34,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`level2Chest`, function (sprit
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (LeftPressed) {
-        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp0`, playerMushroom, -150, 0)
+        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp0`, playerMushroom, -200, 0)
     } else if (DownPressed) {
-        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp2`, playerMushroom, 0, 150)
+        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp2`, playerMushroom, 0, 200)
     } else if (RightPressed) {
-        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp1`, playerMushroom, 150, 0)
+        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp1`, playerMushroom, 200, 0)
     } else if (UpPressed) {
-        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp`, playerMushroom, 0, -150)
+        projectile = sprites.createProjectileFromSprite(assets.image`arrowUp`, playerMushroom, 0, -200)
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2Teleporter`, function (sprite, location) {
@@ -127,9 +127,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1Teleporter`, function (
     snake5level1.follow(playerMushroom, 50)
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    statusbar.value += -1
+    statusbar.value += -10
     scene.cameraShake(4, 500)
-    pause(2000)
+    pause(1000)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     DownPressed = true
@@ -145,7 +145,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`heartTile`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
-    statusbar.value = 100
+    statusbar.value += 20
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy(effects.ashes, 500)
